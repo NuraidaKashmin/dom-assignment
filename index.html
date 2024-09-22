@@ -13,8 +13,74 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
         rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1dd100',
+                        secondary: '#555555',
+                    },
+                    fontFamily: {
+                        inter: 'Inter',
+                    },
+                },
+            },
+        }
+    </script>
 </head>
-<body>
+<body class="font-inter">
+    <!-- navbar start -->
+    <nav class="">
+        <div class="bg-[#f9f7f3] pt-6 pb-16">
+            <div class="navbar justify-between w-11/12 mx-auto">
+                <a class="btn bg-primary text-xl">Blog</a>
+                <div class="space-x-4">
+                    <img src="./assets/logo.png" alt="logo">
+                    <h1 class="text-xl font-bold">Donate Bangladesh</h1>
+                </div>
+                <div class="space-x-4">
+                    <img src="./assets/coin.png" alt="coin">
+                    <p class="text-xl font-bold text-secondary">5500 BDT</p>
+                </div>
+            </div>
+        </div>
+        <div class="w-11/12 mx-auto text-center space-x-4 mt-16">
+            <button class="btn bg-primary">
+                <p class="p-2 font-bold text-xl">Donation</p>
+            </button>
+            <button class="btn border-2 border-secondary">
+                <p class="p-2 font-bold text-xl">History</p>
+            </button>
+        </div>
+    </nav>
+    <!-- navbar end -->
+    <main class="w-11/12 mx-auto">
+        <!-- card-1 -->
+        <section>
+            <div class="card lg:card-side bg-base-100 shadow-xl p-8">
+                <figure>
+                  <img
+                    src="./assets/noakhali.png"
+                    alt="noakhali" />
+                </figure>
+                <div class="card-body flex-1"> 
+                    <div class="flex bg-slate-200 space-x-2 w-1/2 xl:w-1/5 p-3 text-center rounded-xl mb-2">
+                        <img src="./assets/coin.png" alt="coin">
+                        <p class="text-xl text-secondary font-bold">0 BDT</p>
+                    </div>  
+                    <h2 class="card-title">Donate for Flood at Noakhali, Bangladesh</h2>
+                    <p> The recent floods in Noakhali have caused significant damage to homes  infrastructure. Your donation will help provide essential supplies and  to those affected by this disaster. Every contribution, big or small, makes  difference. Please join us in supporting the relief efforts and making a positive impact on the lives of those in need.</p>
+                    <div>
+                        <input type="text" placeholder="Write Donation Amount" class="input input-bordered w-full" />
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn w-full bg-primary text-xl">Donate Now</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
 
 
