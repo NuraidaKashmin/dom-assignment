@@ -19,47 +19,51 @@ donateBtn.addEventListener('click', function(){
 
     if(inputMoney <= 0 || isNaN(inputMoney)){
         alert('Insert Positive Number Only');
-        document.getElementById('myModal').classList.add('hidden');
+        //document.getElementById('myModal').classList.add('hidden');
         setInputValueById('inputMoney', '');
-        return;
+        //return;
     } else if(inputMoney === ''){
         alert('Insert Positive Number Only');
-        document.getElementById('myModal').classList.add('hidden');
+        //document.getElementById('myModal').classList.add('hidden');
         setInputValueById('inputMoney', '');
-        return;
-    }
+        //return;
+    } else {
 
-
-    let donatedBalance = parseFloat(donatedBalanceElement.innerText);
-    let totalDonate = inputMoney + donatedBalance;
-    setInputTextById('donatedBalance', totalDonate)
-    donatedBalanceElement.innerText = Number(totalDonate).toFixed(2);
-    setInputValueById('inputMoney', '');
-    let mainBalance = parseFloat(mainBalanceElement.innerText);
-    let remainBalance = mainBalance - inputMoney;
-    mainBalanceElement.innerText = Number(remainBalance).toFixed(2);
-
-    if(inputMoney > remainBalance){
-        alert('Insufficient Balance!');
-        document.getElementById('myModal').classList.add('hidden');
+        let donatedBalance = parseFloat(donatedBalanceElement.innerText);
+        let totalDonate = inputMoney + donatedBalance;
+        setInputTextById('donatedBalance', totalDonate)
+        donatedBalanceElement.innerText = Number(totalDonate).toFixed(2);
         setInputValueById('inputMoney', '');
-        return;
-                
-    }
+        let mainBalance = parseFloat(mainBalanceElement.innerText);
+        let remainBalance = mainBalance - inputMoney;
+        mainBalanceElement.innerText = Number(remainBalance).toFixed(2);
     
-// Not working
-    let titleOne = document.getElementById('titleOne')
-    let historyItm = document.createElement("div");
-    historyItm.className = 'rounded-lg border-2 border-secondary';
-    historyItm.innerHTML = `
-        <p>${inputMoney} Taka is Donated for ${titleOne}</p>
-        <p>Date: ${new Date().toLocaleDateString()}</p>
+        if(inputMoney > remainBalance){
+            alert('Insufficient Balance!');
+            document.getElementById('myModal').classList.add('hidden');
+            setInputValueById('inputMoney', '');
+            return;
+                    
+        }
         
-    `; 
-    let historyContent = document.getElementById('historyContent').value;
-    console.log(historyContent)
+    // working
+        let titleOne = document.getElementById('titleOne').innerText;
+        let historyItm = document.createElement("div");
+        historyItm.className = 'rounded-lg border-2 border-secondary';
+        historyItm.innerHTML = `
+            <p>${inputMoney} Taka is Donated for ${titleOne}</p>
+            <p>Date: ${new Date().toLocaleDateString()}</p>
+            
+        `; 
+        let historyContent = document.getElementById('historyContent');
+        console.log(historyContent)
+    
+        historyContent.insertBefore(historyItm, historyContent.firstChild);
 
-    historyContent.insertBefore(historyItm, historyContent.firstChild);
+        myModal.showModal();
+    }
+
+
 
 // ------------------
 
