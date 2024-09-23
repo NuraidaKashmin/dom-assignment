@@ -42,7 +42,7 @@
                 </div>
                 <div class="space-x-4">
                     <img src="./assets/coin.png" alt="coin">
-                    <p class="text-xl font-bold text-secondary">5500 BDT</p>
+                    <p class="text-xl font-bold text-secondary"><span id="mainBalance">5500</span> BDT</p>
                 </div>
             </div>
         </div>
@@ -66,7 +66,7 @@
                 <div class="card-body space-y-3 flex-1">
                     <div class="flex bg-slate-200 space-x-2 w-1/2 xl:w-1/5 p-3 text-center rounded-xl mb-2">
                         <img src="./assets/coin.png" alt="coin">
-                        <p class="text-xl text-secondary font-bold">0 BDT</p>
+                        <p class="text-xl text-secondary font-bold"><span id="donatedBalance">0</span> BDT</p>
                     </div>
                     <h2 class="card-title">Donate for Flood at Noakhali, Bangladesh</h2>
                     <p class="text-lg text-secondary"> The recent floods in Noakhali have caused significant damage to
@@ -74,10 +74,10 @@
                         by this disaster. Every contribution, big or small, makes difference. Please join us in
                         supporting the relief efforts and making a positive impact on the lives of those in need.</p>
                     <div>
-                        <input type="text" placeholder="Write Donation Amount" class="input input-bordered w-full" />
+                        <input id="inputMoney" type="text" placeholder="Write Donation Amount" class="input input-bordered w-full" />
                     </div>
                     <div class="card-actions">
-                        <button class="btn w-full bg-primary text-xl" onclick="myModal.showModal()">Donate Now</button>
+                        <button id="donateBtn" class="btn w-full bg-primary text-xl" onclick="myModal.showModal()">Donate Now</button>
                         <!-- modal part -->
                         <dialog id="myModal" class="modal modal-bottom sm:modal-middle">
                             <div class="modal-box text-center">
