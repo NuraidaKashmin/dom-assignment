@@ -30,21 +30,23 @@ donateBtn.addEventListener('click', function(){
     } else {
 
         let donatedBalance = parseFloat(donatedBalanceElement.innerText);
-        let totalDonate = inputMoney + donatedBalance;
-        setInputTextById('donatedBalance', totalDonate)
-        donatedBalanceElement.innerText = Number(totalDonate).toFixed(2);
-        setInputValueById('inputMoney', '');
         let mainBalance = parseFloat(mainBalanceElement.innerText);
-        let remainBalance = mainBalance - inputMoney;
-        mainBalanceElement.innerText = Number(remainBalance).toFixed(2);
-    
-        if(inputMoney > remainBalance){
+
+
+        if(inputMoney > mainBalance){
             alert('Insufficient Balance!');
             document.getElementById('myModal').classList.add('hidden');
             setInputValueById('inputMoney', '');
             return;
                     
         }
+        let totalDonate = inputMoney + donatedBalance;
+        setInputTextById('donatedBalance', totalDonate)
+        donatedBalanceElement.innerText = Number(totalDonate).toFixed(2);
+        setInputValueById('inputMoney', '');
+        let remainBalance = mainBalance - inputMoney;
+        mainBalanceElement.innerText = Number(remainBalance).toFixed(2);
+    
         
     // working
         let titleOne = document.getElementById('titleOne').innerText;
