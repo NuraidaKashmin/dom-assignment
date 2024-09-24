@@ -151,9 +151,9 @@
                 <div class="card-body space-y-3 flex-1">
                     <div class="flex bg-slate-200 space-x-2 w-1/2 xl:w-1/5 p-3 text-center rounded-xl mb-2">
                         <img src="./assets/coin.png" alt="coin">
-                        <p class="text-xl text-secondary font-bold">0 BDT</p>
+                        <p class="text-xl text-secondary font-bold"><span id="donatedBalanceThree">0</span> BDT</p>
                     </div>
-                    <h2 class="card-title">Aid for Injured in the Quota Movement</h2>
+                    <h2 id="titleThree" class="card-title">Aid for Injured in the Quota Movement</h2>
                     <p class="text-lg text-secondary"> The recent Quota movement has resulted in numerous injuries and
                         significant hardship for many individuals. Your support is crucial in providing medical
                         assistance, rehabilitation, and necessary supplies to those affected. By contributing, you help
@@ -162,10 +162,26 @@
                         recovery. Please consider making a donation to support these brave individuals in their time of
                         need.</p>
                     <div>
-                        <input type="text" placeholder="Write Donation Amount" class="input input-bordered w-full" />
+                        <input id="inputMoneyThree" type="text" placeholder="Write Donation Amount" class="input input-bordered w-full" />
                     </div>
                     <div class="card-actions">
-                        <button class="btn w-full bg-primary text-xl">Donate Now</button>
+                        <button id="donateBtnThree" class="btn w-full bg-primary text-xl">Donate Now</button>
+                        <!-- modal part -->
+                    <dialog id="myModalThree" class="modal modal-bottom sm:modal-middle">
+                        <div class="modal-box text-center">
+                            <h3 class="text-2xl font-bold">Congratulation</h3>
+                            <div class="flex justify-center py-4">
+                                <img src="./assets/coin.png" alt="coin">
+                            </div>
+                            <p class="py-4 text-xl">You Have Donated for Humankind</p>
+                            <p class="text-xl font-bold">Successfully</p>
+                            <div class="modal-action justify-center">
+                                <form method="dialog">
+                                    <button class="btn text-base">Close Confirmation</button>
+                                </form>
+                            </div>
+                        </div>
+                    </dialog>
                     </div>
                 </div>
             </div>

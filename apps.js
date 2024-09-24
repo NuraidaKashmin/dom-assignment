@@ -63,7 +63,7 @@ donateBtn.addEventListener('click', function(){
 })
 
 
-
+// card two
 
 let donateBtnTwo = document.getElementById('donateBtnTwo');
 let donatedBalanceTwoElement = document.getElementById('donatedBalanceTwo');
@@ -73,6 +73,21 @@ donateBtnTwo.addEventListener('click', function(){
     let inputMoneyTwo = getValueById('inputMoneyTwo')
     let donatedBalanceTwo = parseFloat(donatedBalanceTwoElement.innerText)
     let mainBalance = parseFloat(mainBalanceElement.innerText)
+
+
+    if(inputMoneyTwo <= 0 || isNaN(inputMoneyTwo)){
+        alert('Insert Positive Number Only');
+        setInputValueById('inputMoneyTwo', '');
+        return;
+    } else if(inputMoneyTwo === ''){
+        alert('Insert Positive Number Only');
+        setInputValueById('inputMoneyTwo', '');
+        return;
+    } else if(inputMoneyTwo > mainBalance){
+        alert('Insufficient Balance!');
+        setInputValueById('inputMoneyTwo', '');
+        return;              
+    }
 
     let totalDonateTwo = inputMoneyTwo + donatedBalanceTwo;
     setInputTextById('donatedBalanceTwo', totalDonateTwo);
@@ -102,9 +117,64 @@ donateBtnTwo.addEventListener('click', function(){
     let modal = document.getElementById('myModalTwo');
     modal.showModal();
 
-
 })
 
+// card three
+
+
+let donateBtnThree = document.getElementById('donateBtnThree');
+let donatedBalanceThreeElement = document.getElementById('donatedBalanceThree');
+
+donateBtnThree.addEventListener('click', function(){
+
+    let inputMoneyThree = getValueById('inputMoneyThree')
+    let donatedBalanceThree = parseFloat(donatedBalanceThreeElement.innerText)
+    let mainBalance = parseFloat(mainBalanceElement.innerText)
+
+
+    if(inputMoneyThree <= 0 || isNaN(inputMoneyThree)){
+        alert('Insert Positive Number Only');
+        setInputValueById('inputMoneyThree', '');
+        return;
+    } else if(inputMoneyThree === ''){
+        alert('Insert Positive Number Only');
+        setInputValueById('inputMoneyThree', '');
+        return;
+    } else if(inputMoneyThree > mainBalance){
+        alert('Insufficient Balance!');
+        setInputValueById('inputMoneyThree', '');
+        return;              
+    }
+
+    let totalDonateThree = inputMoneyThree + donatedBalanceThree;
+    setInputTextById('donatedBalanceThree', totalDonateThree);
+    donatedBalanceThreeElement.innerText = Number(totalDonateThree).toFixed(2);
+
+    setInputValueById('inputMoneyThree', '');
+
+    let remainBalanceThree = mainBalance - inputMoneyThree;
+    mainBalanceElement.innerText = Number(remainBalanceThree).toFixed(2);
+    
+    
+
+    let titleThree = document.getElementById('titleThree').innerText;
+    let historyItm = document.createElement("div");
+    historyItm.className = 'card lg:card-side bg-base-100 shadow-xl space-y-4 p-8 flex-col';
+    historyItm.innerHTML = `
+        <p class="text-xl text-secondary font-bold">${inputMoneyThree} Taka is Donated for ${titleThree}</p>
+        <p class="text-lg text-secondary">Date: ${new Date().toString()}</p>
+        
+    `; 
+    let historyContent = document.getElementById('historyContent');
+    console.log(historyContent)
+
+    historyContent.insertBefore(historyItm, historyContent.firstChild);
+
+
+    let modal = document.getElementById('myModalThree');
+    modal.showModal();
+
+})
 
 
 
