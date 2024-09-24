@@ -9,33 +9,30 @@ function setInputValueById(id, valueToSet) {
 function setInputTextById(id, valueToSet) {
     document.getElementById(id).innerText = valueToSet;
 }
-
+let mainBalanceElement = document.querySelector('.mainBalance');
 let donateBtn = document.getElementById('donateBtn');
     let donatedBalanceElement = document.getElementById('donatedBalance');
-    let mainBalanceElement = document.getElementById('mainBalance');
+    // let mainBalanceElement = document.querySelector('.mainBalance');
+
 
 donateBtn.addEventListener('click', function(){
     let inputMoney = getValueById('inputMoney')
+    let mainBalance = parseFloat(mainBalanceElement.innerText);
 
     if(inputMoney <= 0 || isNaN(inputMoney)){
         alert('Insert Positive Number Only');
-        //document.getElementById('myModal').classList.add('hidden');
         setInputValueById('inputMoney', '');
-        //return;
     } else if(inputMoney === ''){
         alert('Insert Positive Number Only');
-        //document.getElementById('myModal').classList.add('hidden');
         setInputValueById('inputMoney', '');
-        //return;
     } else {
 
         let donatedBalance = parseFloat(donatedBalanceElement.innerText);
-        let mainBalance = parseFloat(mainBalanceElement.innerText);
+        // let mainBalance = parseFloat(mainBalanceElement.innerText);
 
 
         if(inputMoney > mainBalance){
             alert('Insufficient Balance!');
-            document.getElementById('myModal').classList.add('hidden');
             setInputValueById('inputMoney', '');
             return;
                     
@@ -46,15 +43,14 @@ donateBtn.addEventListener('click', function(){
         setInputValueById('inputMoney', '');
         let remainBalance = mainBalance - inputMoney;
         mainBalanceElement.innerText = Number(remainBalance).toFixed(2);
-    
         
-    // working
+
         let titleOne = document.getElementById('titleOne').innerText;
         let historyItm = document.createElement("div");
-        historyItm.className = 'rounded-lg border-2 border-secondary';
+        historyItm.className = 'card lg:card-side bg-base-100 shadow-xl space-y-4 p-8 flex-col';
         historyItm.innerHTML = `
-            <p>${inputMoney} Taka is Donated for ${titleOne}</p>
-            <p>Date: ${new Date().toLocaleDateString()}</p>
+            <p class="text-xl text-secondary font-bold">${inputMoney} Taka is Donated for ${titleOne}</p>
+            <p class="text-lg text-secondary">Date: ${new Date().toString()}</p>
             
         `; 
         let historyContent = document.getElementById('historyContent');
@@ -64,13 +60,56 @@ donateBtn.addEventListener('click', function(){
 
         myModal.showModal();
     }
+})
 
 
 
-// ------------------
+
+let donateBtnTwo = document.getElementById('donateBtnTwo');
+let donatedBalanceTwoElement = document.getElementById('donatedBalanceTwo');
+
+donateBtnTwo.addEventListener('click', function(){
+
+    let inputMoneyTwo = getValueById('inputMoneyTwo')
+    let donatedBalanceTwo = parseFloat(donatedBalanceTwoElement.innerText)
+    let mainBalance = parseFloat(mainBalanceElement.innerText)
+
+    let totalDonateTwo = inputMoneyTwo + donatedBalanceTwo;
+    setInputTextById('donatedBalanceTwo', totalDonateTwo);
+    donatedBalanceTwoElement.innerText = Number(totalDonateTwo).toFixed(2);
+
+    setInputValueById('inputMoneyTwo', '');
+
+    let remainBalanceTwo = mainBalance - inputMoneyTwo;
+    mainBalanceElement.innerText = Number(remainBalanceTwo).toFixed(2);
+    
+    
+
+    let titleTwo = document.getElementById('titleTwo').innerText;
+    let historyItm = document.createElement("div");
+    historyItm.className = 'card lg:card-side bg-base-100 shadow-xl space-y-4 p-8 flex-col';
+    historyItm.innerHTML = `
+        <p class="text-xl text-secondary font-bold">${inputMoneyTwo} Taka is Donated for ${titleTwo}</p>
+        <p class="text-lg text-secondary">Date: ${new Date().toString()}</p>
+        
+    `; 
+    let historyContent = document.getElementById('historyContent');
+    console.log(historyContent)
+
+    historyContent.insertBefore(historyItm, historyContent.firstChild);
+
+
+    let modal = document.getElementById('myModalTwo');
+    modal.showModal();
+
 
 })
-// <p>Date: ${new Date().toString()}</p>
+
+
+
+
+
+
 
 // donation to history and vise versa
 
@@ -85,14 +124,17 @@ historyBtn.addEventListener('click',function(){
     donationBtn.classList.add('border-2', 'border-secondary')
 
     document.getElementById('main').classList.add('hidden');
-
+    document.getElementById('historyContainer').classList.remove('hidden');
 
 })
 donationBtn.addEventListener('click', function(){
     donationBtn.classList.add( 'bg-primary');
+    donationBtn.classList.remove('border-2', 'border-secondary');
 
     historyBtn.classList.remove( 'bg-primary');
+    historyBtn.classList.add('border-2', 'border-secondary');
 
     document.getElementById('main').classList.remove('hidden');
+    document.getElementById('historyContainer').classList.add('hidden');
 
 })
